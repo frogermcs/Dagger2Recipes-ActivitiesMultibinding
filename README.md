@@ -1,5 +1,5 @@
 # Dagger2Recipes-ActivitiesMultibinding
-Example app which shows how to build Activities Multibinding
+Example app which shows how to build Activities Subcomponents Multibinding
 
 ---
 
