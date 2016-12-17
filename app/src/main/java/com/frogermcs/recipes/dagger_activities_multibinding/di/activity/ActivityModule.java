@@ -1,7 +1,5 @@
 package com.frogermcs.recipes.dagger_activities_multibinding.di.activity;
 
-import java.lang.ref.WeakReference;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -11,15 +9,15 @@ import dagger.Provides;
 
 @Module
 public abstract class ActivityModule<T> {
-    protected final WeakReference<T> activity;
+    protected final T activity;
 
     public ActivityModule(T activity) {
-        this.activity = new WeakReference<>(activity);
+        this.activity = activity;
     }
 
     @Provides
     @ActivityScope
     public T provideActivity() {
-        return activity.get();
+        return activity;
     }
 }

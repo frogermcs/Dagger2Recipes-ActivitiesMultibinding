@@ -12,6 +12,7 @@ import com.frogermcs.recipes.dagger_activities_multibinding.di.app.DaggerAppComp
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 /**
  * Created by froger_mcs on 14/09/16.
@@ -20,7 +21,7 @@ import javax.inject.Inject;
 public class MyApplication extends Application implements HasActivitySubcomponentBuilders {
 
     @Inject
-    Map<Class<? extends Activity>, ActivityComponentBuilder> activityComponentBuilders;
+    Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> activityComponentBuilders;
 
     private AppComponent appComponent;
 
@@ -37,6 +38,6 @@ public class MyApplication extends Application implements HasActivitySubcomponen
 
     @Override
     public ActivityComponentBuilder getActivityComponentBuilder(Class<? extends Activity> activityClass) {
-        return activityComponentBuilders.get(activityClass);
+        return activityComponentBuilders.get(activityClass).get();
     }
 }
